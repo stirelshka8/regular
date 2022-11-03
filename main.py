@@ -1,5 +1,6 @@
 from pprint import pprint
 import csv
+import re
 
 
 def read_csv(filename):
