@@ -14,7 +14,7 @@ def read_csv(filename):
         # Переменная хранит в себе данные таблицы
         dict_val = contacts_list[1:]
 
-        # Извлекаем данные, попутна нумеруя
+        # Извлекаем данные, попутно нумеруя
         for data_key, data_val in enumerate(dict_val):
             dict_contact.append({})
             # print(data_key)
@@ -25,7 +25,8 @@ def read_csv(filename):
                 # pprint(format_val)
                 dict_contact[data_key].update({format_key: format_val})
 
-    print(dict_contact[0])
+    # print(dict_contact[0])
+    return dict_contact
 
 
 # with open("phonebook.csv", "w") as f:
