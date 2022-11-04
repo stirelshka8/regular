@@ -3,6 +3,7 @@ import csv
 import re
 
 
+# Функция считывания файла и первоначальной обработки
 def read_csv(filename):
     dict_contact = []
     with open(filename) as read_file:
@@ -30,9 +31,24 @@ def read_csv(filename):
     return dict_contact
 
 
+# Функция правки номеров телефонов
+def editing_phone_number(file_names):
+    with open(file_names, encoding='utf8') as open_file:
+        read_file = open_file.read()
+
+    patphone = r'(\+7|8)?\s*\(?(\d{3})\)?[\s*-]?(\d{3})[\s*-]?(\d{2})[\s*-]?(\d{2})(\s*)\(?(доб\.?)?\s*(\d*)?\)?'
+    patedited = re.sub(patphone, r'+7(\2)\3-\4-\5\6\7\8', read_file)
+    print(patedited)
+
+    with open(file_names, 'w+', encoding='utf8') as rec_files:
+        rec_files.write(patedited)
+
+
 # with open("phonebook.csv", "w") as f:
 #     datawriter = csv.writer(f, delimiter=',')
 #     datawriter.writerows(contacts_list)
 
 if __name__ == '__main__':
-    read_csv("phonebook_raw.csv")
+    file_name = "phonebook_raw.csv"
+    editing_phone_number(file_name)
+    # pprint(read_csv(file_name))
